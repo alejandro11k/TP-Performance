@@ -3,6 +3,8 @@ package unq.tpi.persistencia.performanceEj.daos
 import java.util.List
 import unq.tpi.persistencia.performanceEj.model.Employee
 import unq.tpi.persistencia.util.SessionManager
+import org.hibernate.Criteria
+import org.hibernate.criterion.Order
 
 class EmployeeDAO {
 
@@ -23,5 +25,13 @@ class EmployeeDAO {
 		val session = SessionManager.getSession()
 		session.load(Employee, id) as Employee
 	}
-
+	
+	def getTopTen() {
+		// Trae los 10 empleados con mayor sueldo
+		val session = SessionManager.getSession()
+		val q = session.createQuery("select s.employee from Salary s where s.to = '9999-01-01' order by s.amount asc")
+		q.maxResults = 10
+		q.list() as List<Employee> 
+	}
+	
 }
