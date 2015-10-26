@@ -1,4 +1,4 @@
-# TP-Performance
+# TP-Performance (Grupo 8)
 El objetivo de este TP es simular el escenario que ocurre al desarrollar una aplicación y 
 la misma no cumple con los requerimientos no funcionales de Performance en sus consultas. 
 
