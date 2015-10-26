@@ -29,7 +29,7 @@ class EmployeeDAO {
 	def getTopTen() {
 		// Trae los 10 empleados con mayor sueldo
 		val session = SessionManager.getSession()
-		val q = session.createQuery("select s.employee from Salary s where s.to = '9999-01-01' order by s.amount asc")
+		val q = session.createQuery("select e from Employee e join e.salaries s where s.to = '9999-01-01' order by s.amount desc")
 		q.maxResults = 10
 		q.list() as List<Employee> 
 	}
